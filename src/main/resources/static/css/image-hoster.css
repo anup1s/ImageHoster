@@ -1,0 +1,11 @@
+/*! Custom CSS for UI business requirements */
+
+.messageWrapper {
+	margin-top: 5px
+}
+
+.errorMessage {
+    display: inline;
+    border: 1px solid red;
+    padding: 1px;
+}
