@@ -1,10 +1,14 @@
-/*
 package ImageHoster.controller;
 
-import ImageHoster.model.User;
-import ImageHoster.model.UserProfile;
-import ImageHoster.service.ImageService;
-import ImageHoster.service.UserService;
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -15,11 +19,10 @@ import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.hamcrest.CoreMatchers.containsString;
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import ImageHoster.model.User;
+import ImageHoster.model.UserProfile;
+import ImageHoster.service.ImageService;
+import ImageHoster.service.UserService;
 
 
 @RunWith(SpringRunner.class)
@@ -167,4 +170,4 @@ public class UserControllerTest {
                 .andExpect(content().string(containsString("Image Hoster")));
     }
 }
-*/
+
