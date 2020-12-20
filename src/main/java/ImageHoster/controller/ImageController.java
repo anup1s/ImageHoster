@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.management.RuntimeErrorException;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.*;
@@ -45,9 +46,14 @@ public class ImageController {
     //Also now you need to add the tags of an image in the Model type object
     //Here a list of tags is added in the Model type object
     //this list is then sent to 'images/image.html' file and the tags are displayed
-    @RequestMapping("/images/{title}")
-    public String showImage(@PathVariable("title") String title, Model model) {
-        Image image = imageService.getImageByTitle(title);
+    @RequestMapping("/images/{imageId}/{title}")
+    public String showImage(@PathVariable("imageId") Integer imageId,@PathVariable("title") String title, Model model) {
+        Image image = imageService.getImage(imageId);
+        
+        if(!image.getTitle().equalsIgnoreCase(title)) {
+        	throw new RuntimeException("Invalid title and id association");
+        }
+        
         model.addAttribute("image", image);
         model.addAttribute("tags", image.getTags());
         return "images/image";
