@@ -11,7 +11,8 @@ import java.util.List;
 
 @Service
 public class ImageService {
-    @Autowired
+    
+	@Autowired
     private ImageRepository imageRepository;
 
     //Call the getAllImages() method in the Repository and obtain a List of all the images in the database
@@ -28,7 +29,12 @@ public class ImageService {
 
     //The method calls the getImageByTitle() method in the Repository and passes the title of the image to be fetched
     public Image getImageByTitle(String title) {
-        return imageRepository.getImageByTitle(title);
+    	List<Image> listOfImages = imageRepository.getImagesByTitle(title);
+    	if(listOfImages != null && !listOfImages.isEmpty()) {
+    		// Returns first match image from the database
+    		return listOfImages.get(0);	
+    	}
+    	return null;
     }
 
     //The method calls the getImage() method in the Repository and passes the id of the image to be fetched
